@@ -10,14 +10,22 @@ class KanbanBoardService(ModuleService):
         super().__init__(KanbanBoard, "KanbanBoards")
 
     async def crear(self, model, payload):
-        await self.area_service.validate_area_ids([model.areaId])
-        if payload["role"] != "Admin" and model.areaId not in payload.get("areaIds", []):
-            raise HTTPException(status_code=401, detail="No tienes permisos para crear tableros en esta area")
+        model.areaIds = await self.area_service.validate_area_ids(model.areaIds)
+        if payload["role"] != "Admin" and not set(model.areaIds).issubset(set(payload.get("areaIds", []))):
+            raise HTTPException(status_code=401, detail="No tienes permisos para crear tableros en estas areas")
         last_id = await self.get_last_id()
         board = self.model(**model.model_dump(), id=int(last_id) + 1)
         return await self.create(board)
 
+    async def update_one(self, id: int, data: dict):
+        if "areaId" in data and "areaIds" not in data:
+            data["areaIds"] = [data.pop("areaId")]
+        if "areaIds" in data:
+            data["areaIds"] = await self.area_service.validate_area_ids(data["areaIds"])
+        return await super().update_one(id, data)
+
     async def get_todos(self, payload):
         if payload["role"] == "Admin":
             return await self.get_multiple()
-        return await self.get_multiple({"areaId": {"$in": payload.get("areaIds", [])}})
+        area_ids = payload.get("areaIds", [])
+        return await self.get_multiple({"$or": [{"areaIds": {"$in": area_ids}}, {"areaId": {"$in": area_ids}}]})

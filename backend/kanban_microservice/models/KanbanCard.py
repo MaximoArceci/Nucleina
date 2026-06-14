@@ -11,6 +11,8 @@ class KanbanCardCreate(BaseModel):
     areaId: int
     assigneeIds: list[int] = []
     labels: list[str] = []
+    blocksCardId: int | None = None
+    location: str = ""
     position: int = 0
     dueDate: datetime | None = None
     archived: bool = False
