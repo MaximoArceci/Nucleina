@@ -25,6 +25,7 @@ Updated: 2026-06-18
 - [ ] Restrict sections/actions once the permission matrix is approved.
 - [ ] Add a director role/workflow for area leads to follow the work of volunteers in their area.
 - [x] Add a contacts agenda for organizational contacts, with name, organization, email, phone, and description.
+- [ ] Link each Nucleus area to an optional Google Drive folder for document synchronization.
 
 4. Calendar and meetings
 - [x] Reuse the calendar and Google Meet integration for organizational meetings.
@@ -61,7 +62,9 @@ Updated: 2026-06-18
 - [x] Validate document create/update/list/archive flow against the local backend.
 - [ ] Add autosave or saved-state feedback for a smoother Notion-like editing experience.
 - [ ] Add document search and optional document ordering/pinning.
-- [ ] Add Google Drive document preview support inside Docs.
+- [x] Add Google Drive document preview support inside Docs.
+- [ ] Add embedded previews for linked Google Drive files across Docs, Calendar, Kanban, and Contacts.
+- [ ] Sync Google Drive folders by area so area documents can be discovered and linked from Nucleus.
 - [ ] Support linking Docs documents to calendar dates/events.
 - [ ] Store generated meeting minutes as Docs documents tied to their source meeting.
 
@@ -70,6 +73,7 @@ Updated: 2026-06-18
 - [x] Keep backend/config/credentials.json local-only and retain backend/config/credentials.example.json.
 - [ ] Create/confirm a Google Cloud OAuth client branded for Nucleus.
 - [ ] Define Google Drive API access and permissions for embedded document previews.
+- [ ] Define Drive folder sync strategy, scopes, and webhook/change-token handling for area folders.
 - [ ] Replace remaining old 45Minutes callback and redirect URLs with environment variables.
 - [ ] Audit SMTP and Stripe/payment configuration and decide whether they remain in the MVP.
 

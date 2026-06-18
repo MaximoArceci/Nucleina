@@ -7,6 +7,9 @@ class DocumentCreate(BaseModel):
     areaId: int
     title: str
     content: str = ""
+    driveFileId: str = ""
+    driveUrl: str = ""
+    drivePreviewUrl: str = ""
     updatedBy: int = 0
     archived: bool = False
     updatedAt: datetime | None = None
