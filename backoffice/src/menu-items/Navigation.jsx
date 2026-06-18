@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import ArticleIcon from "@mui/icons-material/Article";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import ContactsIcon from "@mui/icons-material/Contacts";
 
 function Navbar({ toggleNavbar }) {
   const location = useLocation();
@@ -90,6 +91,25 @@ function Navbar({ toggleNavbar }) {
                     }`}
                 >
                   Disponibilidad
+                </span>
+              </div>
+            </Link>
+          </li>
+
+          <li className="mb-4 nav-menu">
+            <Link
+              to={"/contacts"}
+              className={`flex items-center    ${toggleNavbar ? "w-[4rem] justify-center" : "w-52 justify-left"
+                } ${location.pathname === "/contacts" && "bg-hovercolor"
+                }`}
+            >
+              <div className="flex items-center justify-center ">
+                <ContactsIcon className="min-w-max" />
+                <span
+                  className={`overflow-hidden transition-all duration-300 ${toggleNavbar ? "hidden" : "max-w-full opacity-100 ml-4"
+                    }`}
+                >
+                  Contactos
                 </span>
               </div>
             </Link>

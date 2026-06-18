@@ -24,7 +24,7 @@ Updated: 2026-06-18
 - [ ] Define final permission matrix by role and area.
 - [ ] Restrict sections/actions once the permission matrix is approved.
 - [ ] Add a director role/workflow for area leads to follow the work of volunteers in their area.
-- [ ] Add a contacts agenda for organizational contacts, with owner/area assignment and basic notes.
+- [x] Add a contacts agenda for organizational contacts, with name, organization, email, phone, and description.
 
 4. Calendar and meetings
 - [x] Reuse the calendar and Google Meet integration for organizational meetings.
