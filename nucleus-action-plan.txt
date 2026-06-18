@@ -1,28 +1,87 @@
 Nucleus action plan
+Updated: 2026-06-18
 
 1. Configure local environment
-- Create a local .env from .env.example.
-- Use DATABASE_NAME=nucleus.
-- Keep real secrets out of Git.
-- Add backend startup validation for required environment variables.
+- [x] Use DATABASE_NAME=nucleus in local compose.
+- [x] Keep real secrets out of Git with ignored local env/credential files.
+- [x] Ignore the reference kanban frontend folder: frontend-KANBAN/.
+- [ ] Create a complete local .env from .env.example for every integration.
+- [ ] Add backend startup validation for required environment variables.
 
-2. Restore external connections
-- Configure MongoDB for the nucleus database.
-- Create a Google Cloud OAuth client for Nucleus.
-- Store backend/config/credentials.json locally only.
-- Replace old 45Minutes callback and redirect URLs with environment variables.
+2. Branding and shell
+- [x] Replace 45Minutes naming/logo in the backoffice with Nucleus.
+- [x] Use the Nucleus logo in the app shell and favicon.
+- [x] Apply the Nucleate palette:
+  Primary #7CB3E9, Secondary #2563EB, Accent #14B8A6, Background #FAFCFF, Text #0F172A.
+- [x] Make sidebar and topbar use the same strong blue.
+- [ ] Continue removing old therapy-domain copy from the public landing pages.
 
-3. Adapt the domain
-- Replace therapy-specific users with Nucleus members.
-- Introduce teams, roles, meetings, contacts, projects, tasks, and documents.
-- Disable or remove payments from the MVP unless needed.
+3. Users, areas, and permissions
+- [x] Replace the visible patient/therapist/candidate management UI with Users and Areas.
+- [x] Support assigning volunteers to one or multiple areas.
+- [x] Make all frontend sections visible while the new role/area model is being defined.
+- [x] Give maxiarceci@gmail.com admin permissions across services and frontend auth.
+- [ ] Define final permission matrix by role and area.
+- [ ] Restrict sections/actions once the permission matrix is approved.
+- [ ] Add a director role/workflow for area leads to follow the work of volunteers in their area.
+- [ ] Add a contacts agenda for organizational contacts, with owner/area assignment and basic notes.
 
-4. Reuse existing modules
-- Reuse the calendar and Google Meet integration for organizational meetings.
-- Reuse the contact list as the base for the internal CRM.
-- Reuse the existing drag-and-drop dependencies for Kanban.
+4. Calendar and meetings
+- [x] Reuse the calendar and Google Meet integration for organizational meetings.
+- [x] Move the calendar UI from patient/therapist/candidate selection to volunteers, areas, and all participants.
+- [x] Use /reuniones/reunion/* as the new meetings endpoint in the frontend.
+- [x] Support participant modes: volunteers, areas, all.
+- [x] Filter the calendar by volunteer, including meetings for direct volunteers, areas, all, and organizer.
+- [x] Normalize events for FullCalendar so all-participant meetings render correctly.
+- [x] Refresh calendar state after create/update/delete so F5 is not required.
+- [ ] Delete/update the Google Calendar event when a Nucleus meeting is deleted/edited locally.
+- [ ] Track who actually joins each team meeting so departures can be analyzed with historical participation/performance context.
+- [ ] Link documents to calendar dates/events so meeting context and follow-up notes are accessible from the agenda.
+- [ ] Generate automatic meeting minutes from meeting recordings/transcripts and link them to the calendar event.
+- [x] Build a When2Meet-style availability coordinator for volunteers to agree on meeting dates.
+- [ ] Remove or archive old backend meeting services for reunion_inicial, reunion_terapeutica, and reunion_administracion after migration confidence.
 
-5. Security cleanup
-- Remove frontend logs that print environment variables.
-- Move SMTP server, user, and password to environment variables.
-- Keep .env and Google credential JSON files ignored.
+5. Kanban
+- [x] Import the complete Kanban experience into Nucleus.
+- [x] Support boards, columns, cards, labels, assignees, due dates, dependencies, locations, and drag/drop.
+- [x] Allow boards to belong to multiple areas.
+- [x] Filter boards/cards by user areas for non-admins.
+- [x] Keep admins able to see all boards.
+- [ ] Add persistence tests for board area filtering and card movement.
+- [ ] Add tree view and/or calendar view for cards with due dates.
+- [ ] Add card comments and activity log for better collaboration and tracking.
+- [ ] Add a director view to follow the boards/cards assigned to volunteers in the director's area.
+
+6. Docs
+- [x] Add a Docs section with rich text documents by area.
+- [x] Add backend /documentos service with area-based access.
+- [x] Create, edit, list, and archive documents.
+- [x] Fix response normalization so Docs does not crash on wrapped responses.
+- [x] Fix /documentos/ routing so list reloads return JSON instead of docs redirect.
+- [x] Validate document create/update/list/archive flow against the local backend.
+- [ ] Add autosave or saved-state feedback for a smoother Notion-like editing experience.
+- [ ] Add document search and optional document ordering/pinning.
+- [ ] Add Google Drive document preview support inside Docs.
+- [ ] Support linking Docs documents to calendar dates/events.
+- [ ] Store generated meeting minutes as Docs documents tied to their source meeting.
+
+7. External connections
+- [x] Configure MongoDB locally for the nucleus database.
+- [x] Keep backend/config/credentials.json local-only and retain backend/config/credentials.example.json.
+- [ ] Create/confirm a Google Cloud OAuth client branded for Nucleus.
+- [ ] Define Google Drive API access and permissions for embedded document previews.
+- [ ] Replace remaining old 45Minutes callback and redirect URLs with environment variables.
+- [ ] Audit SMTP and Stripe/payment configuration and decide whether they remain in the MVP.
+
+8. Security cleanup
+- [x] Keep .env and Google credential JSON files ignored.
+- [ ] Remove frontend logs that print environment variables.
+- [ ] Move SMTP server, user, and password fully to environment variables.
+- [ ] Run a final secret scan before publishing/deploying.
+
+9. Validation
+- [x] Build backoffice successfully with npm run build -- --outDir /tmp/nucleus-backoffice-build.
+- [x] Compile new backend modules for documents and meetings changes.
+- [x] Smoke test Docs create/list/update/archive locally.
+- [x] Smoke test Meetings create/list/update/delete locally.
+- [ ] Add focused automated tests for users/areas, docs, kanban filters, and meetings.

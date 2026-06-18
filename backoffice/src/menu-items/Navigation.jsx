@@ -7,6 +7,7 @@ import StorageIcon from "@mui/icons-material/Storage";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import ArticleIcon from "@mui/icons-material/Article";
+import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 
 function Navbar({ toggleNavbar }) {
   const location = useLocation();
@@ -70,6 +71,25 @@ function Navbar({ toggleNavbar }) {
                     }`}
                 >
                   Docs
+                </span>
+              </div>
+            </Link>
+          </li>
+
+          <li className="mb-4 nav-menu">
+            <Link
+              to={"/availability"}
+              className={`flex items-center    ${toggleNavbar ? "w-[4rem] justify-center" : "w-52 justify-left"
+                } ${location.pathname === "/availability" && "bg-hovercolor"
+                }`}
+            >
+              <div className="flex items-center justify-center ">
+                <EventAvailableIcon className="min-w-max" />
+                <span
+                  className={`overflow-hidden transition-all duration-300 ${toggleNavbar ? "hidden" : "max-w-full opacity-100 ml-4"
+                    }`}
+                >
+                  Disponibilidad
                 </span>
               </div>
             </Link>

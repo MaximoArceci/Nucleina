@@ -11,6 +11,7 @@ import Landing from "views/pages/Landing/pages/Landing";
 const Calendar = lazy(() => import("views/application/calendar/index"));
 const Kanban = lazy(() => import("views/application/kanban/index"));
 const Docs = lazy(() => import("views/application/docs/index"));
+const Availability = lazy(() => import("views/application/availability/index"));
 const Loader = lazy(() => import("ui-component/Loader"));
 const Header = lazy(() => import("ui-component/Header"));
 import Detas from "views/pages/Landing/pages/components/Detas"
@@ -73,6 +74,7 @@ const AppRouter = () => {
                     <Route path="/home" element={<Calendar />} />
                     <Route path="/kanban" element={<Kanban />} />
                     <Route path="/docs" element={<Docs />} />
+                    <Route path="/availability" element={<Availability />} />
                     <Route path="/usuarios" element={<UsersAreasManagement />} />
                     <Route path="/areas" element={<UsersAreasManagement />} />
                     <Route path="/terapeuta" element={<Navigate to="/usuarios" replace />} />

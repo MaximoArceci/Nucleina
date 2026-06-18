@@ -1,4 +1,5 @@
 from .api import routes_list
+from .api import availability_poll_router
 from CORS_config import origins, methods, headers
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -51,3 +52,4 @@ async def restore_db():
 for route in routes_list:
     app.include_router(route[0]().router, prefix=route[1], tags=route[2])
 app.include_router(google_auth.router, prefix="/auth", tags=["Google Auth"])
+app.include_router(availability_poll_router.router, prefix="/availability-polls", tags=["Availability Polls"])
