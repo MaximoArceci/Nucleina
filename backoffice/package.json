@@ -54,6 +54,7 @@
     "dayjs": "^1.11.13",
     "draft-js": "^0.11.7",
     "emoji-picker-react": "^4.8.0",
+    "exceljs": "^4.4.0",
     "firebase": "^10.8.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.4.7",
@@ -90,6 +91,7 @@
     "react-router": "^6.22.1",
     "react-router-dom": "^7.2.0",
     "react-slick": "^0.30.2",
+    "react-spreadsheet": "^0.9.5",
     "react-syntax-highlighter": "^15.5.0",
     "react-timer-hook": "^3.0.7",
     "react-to-print": "^2.15.1",
@@ -112,6 +114,7 @@
     "vite": "^5.1.4",
     "vite-jsconfig-paths": "^2.0.1",
     "web-vitals": "^3.5.2",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
     "yup": "^1.6.1"
   },
   "devDependencies": {

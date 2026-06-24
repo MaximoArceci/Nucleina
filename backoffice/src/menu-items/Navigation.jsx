@@ -9,6 +9,7 @@ import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import ArticleIcon from "@mui/icons-material/Article";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import ContactsIcon from "@mui/icons-material/Contacts";
+import GridOnIcon from "@mui/icons-material/GridOn";
 
 function Navbar({ toggleNavbar }) {
   const location = useLocation();
@@ -72,6 +73,25 @@ function Navbar({ toggleNavbar }) {
                     }`}
                 >
                   Docs
+                </span>
+              </div>
+            </Link>
+          </li>
+
+          <li className="mb-4 nav-menu">
+            <Link
+              to={"/sheets"}
+              className={`flex items-center    ${toggleNavbar ? "w-[4rem] justify-center" : "w-52 justify-left"
+                } ${location.pathname === "/sheets" && "bg-hovercolor"
+                }`}
+            >
+              <div className="flex items-center justify-center ">
+                <GridOnIcon className="min-w-max" />
+                <span
+                  className={`overflow-hidden transition-all duration-300 ${toggleNavbar ? "hidden" : "max-w-full opacity-100 ml-4"
+                    }`}
+                >
+                  Planillas
                 </span>
               </div>
             </Link>

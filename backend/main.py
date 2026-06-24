@@ -4,6 +4,7 @@ from pago_microservice.aplication import app as pago_MSApp
 from kanban_microservice.aplication import app as kanban_MSApp
 from documentos_microservice.aplication import app as documentos_MSApp
 from contactos_microservice.aplication import app as contactos_MSApp
+from planillas_microservice.aplication import app as planillas_MSApp
 import CORS_config
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
@@ -35,6 +36,7 @@ main_app.mount("/pagos", pago_MSApp)
 main_app.mount("/kanban", kanban_MSApp)
 main_app.mount("/documentos", documentos_MSApp)
 main_app.mount("/contactos", contactos_MSApp)
+main_app.mount("/planillas", planillas_MSApp)
 
 @main_app.get("/")
 async def root():
@@ -64,3 +66,7 @@ async def root():
 @main_app.get("/contactos")
 async def root():
     return RedirectResponse(url="/contactos/docs")
+
+@main_app.get("/planillas")
+async def root():
+    return RedirectResponse(url="/planillas/docs")
